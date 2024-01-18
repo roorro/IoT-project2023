@@ -108,11 +108,11 @@ This project is bare minimum and the changes I would've loved to make like datab
 
     ```> ping <IP_ADDRESS>```
 
-12. After this disconnect from one node using Ctrl+C and make the border router(place node id for the border router to $BR_ID:
+12. After this disconnect from one node using Ctrl+C and make the border router(place node id for the border router to $BR_ID):
 
     ```make -C ../RIOT/examples/gnrc_border_router/ ETHOS_BAUDRATE=500000 BOARD=iotlab-m3 DEFAULT_CHANNEL=19 DEFAULT_PAN_ID=0xdfca IOTLAB_NODE=m3-$BR_ID.lille.iot-lab.info```
 
-13. Then flash it to the correct node with (where <id> is the node id that is not used for the border router):
+13. Then flash it to the correct node with (where ```<id>``` is the node id that is not used for the border router):
 
     ```iotlab-node --flash /senslab/users/iot2023oulu101/RIOT/examples/gnrc_border_router/bin/iotlab-m3/gnrc_border_router.elf -e lille,m3,<id>```
 
@@ -124,11 +124,11 @@ This project is bare minimum and the changes I would've loved to make like datab
 
     ```ip -6 route```
 
-16. From these you have to choose available tap and route for next step. So for example if taps tap0 and tap1 are unavailable you can choose tap2. For route you can choose first one that is available. Grenoble routes start from 2001:660:5307:3100::/64 So you check the first that is not unavailable and you choose that one.
+16. From these you have to choose available tap and route for next step. So for example if taps tap0 and tap1 are unavailable you can choose tap2. For route you can choose first one that is available. Lille routes start from 2001:660:4403:0480::/64 So you check the first that is not unavailable and you choose that one.
 
 17. Then you deploy the border router connection with (<br_id> is the id of your border router node and you replace <available_tap> and <available_route> with your chosen tap and route:
 
-    ```sudo ethos_uhcpd.py <br_id> <available_tap> <available_route>```
+    ```sudo ethos_uhcpd.py m3-<br_id> <available_tap> <available_route>```
 
 18. You can that the border router is running with ```nc m3-<br_id> 20000``` (this is not necessary but if there are some problems)
 
